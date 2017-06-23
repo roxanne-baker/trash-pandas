@@ -23,7 +23,7 @@ namespace InfusionGames.CityScramble.Droid.Services
 
         public override async Task StartSendingLocation(Race race)
         {
-            throw new NotImplementedException("StartSendingLocation - start droid background service");
+          //  throw new NotImplementedException("StartSendingLocation - start droid background service");
 
             await base.StartSendingLocation(race);
         }
@@ -32,7 +32,7 @@ namespace InfusionGames.CityScramble.Droid.Services
         {
             await base.StopSendingLocation();
 
-            throw new NotImplementedException("StopSendingLocation - stop droid background service");
+        //    throw new NotImplementedException("StopSendingLocation - stop droid background service");
 
         }
 
