@@ -3,9 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="InfusionGames.CityScramble.Views.JoinTeamView"
              xmlns:cm="clr-namespace:Caliburn.Micro.Xamarin.Forms;assembly=Caliburn.Micro.Platform.Xamarin.Forms"
-             xmlns:views="clr-namespace:InfusionGames.CityScramble.Views;assembly=InfusionGames.CityScramble"
-             xmlns:viewModels="clr-namespace:InfusionGames.CityScramble.ViewModels;assembly=InfusionGames.CityScramble"
-             xmlns:services="clr-namespace:InfusionGames.CityScramble.Services;assembly=InfusionGames.CityScramble">
+             xmlns:views="clr-namespace:InfusionGames.CityScramble.Views;assembly=InfusionGames.CityScramble">
 
   <StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Orientation="Vertical" Spacing="15">
     <Label Text="Enter a Team Code:" />

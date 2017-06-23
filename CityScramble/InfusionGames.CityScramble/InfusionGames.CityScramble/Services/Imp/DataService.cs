@@ -37,13 +37,9 @@ namespace InfusionGames.CityScramble.Services
         {
             try
             {
-                var dummy = new Race { Name = "Dummy Race" };
+                var races = await _client.InvokeApiAsync<IEnumerable<Race>>("race", HttpMethod.Get, null);
 
-                return new[] { dummy };
-
-                //var races = await _client.InvokeApiAsync<IEnumerable<Race>>("race", HttpMethod.Get, null);
-
-                //return races;
+                return races;
             }
             catch (Exception ex)
             {
