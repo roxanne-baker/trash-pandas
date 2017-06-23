@@ -9,7 +9,7 @@ namespace InfusionGames.CityScramble.Services
 
         Task<Profile> GetProfileAsync();
 
-        Task<Team> JoinTeamAsync(string teamCode);
+        Task<TeamMembership> JoinTeamAsync(string teamCode);
 
         Task<IEnumerable<Race>> GetRacesAsync();
 

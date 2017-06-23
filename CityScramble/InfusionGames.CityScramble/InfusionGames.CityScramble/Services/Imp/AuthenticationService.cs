@@ -105,7 +105,7 @@ namespace InfusionGames.CityScramble.Services
             _authenticator.Logout();
         }
 
-        public async Task GetProfileAndSaveItToSettings()
+        private async Task GetProfileAndSaveItToSettings()
         {
             var profile = await _dataService.GetProfileAsync();
             if (profile != null)
