@@ -104,7 +104,6 @@ namespace InfusionGames.CityScramble.ViewModels
                 .WithParam(x => x.SelectedRace, CurrentRace)
                 .Navigate();
 
-            //_dataService.GetRaceAsync(CurrentRace.Id);
         }
     }
 }

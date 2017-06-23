@@ -13,15 +13,19 @@ namespace InfusionGames.CityScramble.ViewModels
     public class LeaderViewModel : BaseScreen, IRaceTab
     {
         private readonly IDataService _dataService;
+        private  BindableCollection<Team> _teams;
+
         public LeaderViewModel(IDataService dataService)
         {
-            _dataService = dataService;
+        //    _dataService = dataService;
+           _teams = new BindableCollection<Team>();
+           
         }
 
         #region IRaceTab implementation
         /// <summary>
         /// Navigation Parameter
-        /// </summary>
+        /// </summary>`
         public Race SelectedRace { get; set; }
 
         public string Title { get; private set; } = "Leader Board";
@@ -34,15 +38,19 @@ namespace InfusionGames.CityScramble.ViewModels
         {
             return true;
         }
+        public BindableCollection<Team> teams {
+            get { return _teams; }
+            set { _teams = value; } }
         #endregion
-
-        protected override void OnActivate()
-        {
-            //base.OnActivate();
-           var teams = _dataService.GetRaceAsync(SelectedRace.Id).Result.Teams;
-           
         
+        protected override async void OnActivate()
+        {
+            base.OnActivate();
+           var response = await IoC.Get<IDataService>().GetRaceAsync(SelectedRace.Id);
+            _teams.AddRange(response.Teams);
+          
 
         }
+
     }    
 }
