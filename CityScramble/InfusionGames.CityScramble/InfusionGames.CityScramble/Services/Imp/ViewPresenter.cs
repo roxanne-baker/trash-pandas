@@ -69,7 +69,6 @@ namespace InfusionGames.CityScramble.Services
                 }
                 else
                 {
-                    //ShowMainNavStack();
                     ShowJoinTeam();
                 }
             }
