@@ -15,14 +15,16 @@ namespace InfusionGames.CityScramble.ViewModels
     public class LoginViewModel : BaseScreen
     {
         private readonly INavigationService _navigationService;
+        private readonly IAuthenticationService _authService;
 
         /// <summary>
         /// Default Constructor
         /// </summary>
         public LoginViewModel(
-            INavigationService navigationService)
+            INavigationService navigationService, IAuthenticationService authService)
         {
             _navigationService = navigationService;
+            _authService = authService;
 
         }
 
@@ -46,8 +48,9 @@ namespace InfusionGames.CityScramble.ViewModels
         private async void Login()
         {
             // TODO: Trigger authentication flow
+            bool loggedIn = await _authService.LoginAsync();
 
-            await _navigationService.NavigateToViewModelAsync<RaceSelectionViewModel>();
+            await _navigationService.NavigateToViewModelAsync<JoinTeamViewModel>();
         }
 
     }

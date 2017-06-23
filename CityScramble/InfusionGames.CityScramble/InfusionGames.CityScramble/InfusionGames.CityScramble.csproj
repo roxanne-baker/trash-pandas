@@ -75,6 +75,7 @@
     <Compile Include="ViewModels\CluesViewModel.cs" />
     <Compile Include="ViewModels\Extensions.cs" />
     <Compile Include="ViewModels\GroupOfT.cs" />
+    <Compile Include="ViewModels\JoinTeamViewModel.cs" />
     <Compile Include="ViewModels\LoginViewModel.cs" />
     <Compile Include="ViewModels\MapViewModel.cs" />
     <Compile Include="ViewModels\RaceSelectionViewModel.cs" />
@@ -82,6 +83,9 @@
     <Compile Include="ViewModels\LeaderViewModel.cs" />
     <Compile Include="Views\CluesView.xaml.cs">
       <DependentUpon>CluesView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\JoinTeamView.xaml.cs">
+      <DependentUpon>JoinTeamView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\LoginView.xaml.cs">
       <DependentUpon>LoginView.xaml</DependentUpon>
@@ -251,6 +255,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\settings_cog.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\JoinTeamView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="..\..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets" Condition="Exists('..\..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" />

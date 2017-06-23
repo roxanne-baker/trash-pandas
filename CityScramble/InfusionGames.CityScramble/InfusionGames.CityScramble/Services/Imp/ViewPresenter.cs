@@ -50,6 +50,35 @@ namespace InfusionGames.CityScramble.Services
             ActivePage = _mainStack;
         }
 
+        private void ShowJoinTeam()
+        {
+            EnsureMainStackInitialized<JoinTeamView>();
+
+            ActivePage = _mainStack;
+        }
+
+        public async void ShowFirstPage()
+        {
+            bool loggedIn = await _authService.IsLoggedInAsync();
+            if(loggedIn)
+            {
+                bool hasTeam = await _authService.IsUserLoggedInWithTeamAsync();
+                if(hasTeam)
+                {
+                    ShowMainNavStack();
+                }
+                else
+                {
+                    //ShowMainNavStack();
+                    ShowJoinTeam();
+                }
+            }
+            else
+            {
+                ShowLogin();
+            }
+        }
+
         public void ShowLogin()
         {
             EnsureMainStackInitialized<LoginView>();

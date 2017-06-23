@@ -21,12 +21,16 @@ namespace InfusionGames.CityScramble.Services
 
         public async Task<Profile> GetProfileAsync()
         {
-            throw new NotImplementedException("GetProfileAsync");
+            var profile = await _client.InvokeApiAsync<Profile>("profile", HttpMethod.Get, null);
+            return profile;
         }
 
         public async Task<Team> JoinTeamAsync(string teamCode)
         {
-            throw new NotImplementedException("JoinTeamAsync");
+            var teamParameters = new Dictionary<string, string>();
+            teamParameters["joinCode"] = teamCode;
+            var team = await _client.InvokeApiAsync<Team>("profile?joinCode={joinCode}", HttpMethod.Post, teamParameters);
+            return team;
         }
 
         public async Task<IEnumerable<Race>> GetRacesAsync()

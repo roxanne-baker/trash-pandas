@@ -25,6 +25,7 @@ namespace InfusionGames.CityScramble
 
 			container
 				.PerRequest<LoginViewModel>()
+                .PerRequest<JoinTeamViewModel>()
 				.PerRequest<RaceSelectionViewModel>()
 				.PerRequest<TabbedViewModel>()
 				.PerRequest<IRaceTab, LeaderViewModel>()
@@ -44,7 +45,7 @@ namespace InfusionGames.CityScramble
             container.Singleton<ViewPresenter>();
 
             // ask the viewpresenter to display the first view (synchronously)
-            IoC.Get<ViewPresenter>().ShowLogin();
+            IoC.Get<ViewPresenter>().ShowFirstPage();
             
         }
 
