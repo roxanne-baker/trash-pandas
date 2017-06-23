@@ -25,12 +25,12 @@ namespace InfusionGames.CityScramble.Services
             return profile;
         }
 
-        public async Task<Team> JoinTeamAsync(string teamCode)
+        public async Task<TeamMembership> JoinTeamAsync(string teamCode)
         {
-            var teamParameters = new Dictionary<string, string>();
-            teamParameters["joinCode"] = teamCode;
-            var team = await _client.InvokeApiAsync<Team>("profile?joinCode={joinCode}", HttpMethod.Post, teamParameters);
-            return team;
+            var teamMembershipParameters = new Dictionary<string, string>();
+            teamMembershipParameters["joinCode"] = teamCode;
+            var teamMembership = await _client.InvokeApiAsync<TeamMembership>("profile", HttpMethod.Post, teamMembershipParameters);
+            return teamMembership;
         }
 
         public async Task<IEnumerable<Race>> GetRacesAsync()

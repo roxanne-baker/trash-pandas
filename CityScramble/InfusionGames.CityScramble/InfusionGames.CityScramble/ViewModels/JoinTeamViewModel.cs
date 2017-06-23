@@ -19,6 +19,7 @@ namespace InfusionGames.CityScramble.ViewModels
     {
         private readonly INavigationService _navigationService;
         private readonly IDataService _dataService;
+        private readonly ISettingsService _settingsService;
 
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -26,10 +27,11 @@ namespace InfusionGames.CityScramble.ViewModels
         /// Default Constructor
         /// </summary>
         public JoinTeamViewModel(
-            INavigationService navigationService, IDataService dataService)
+            INavigationService navigationService, IDataService dataService, ISettingsService settingsService)
         {
             _navigationService = navigationService;
             _dataService = dataService;
+            _settingsService = settingsService;
         }
 
 
@@ -57,7 +59,10 @@ namespace InfusionGames.CityScramble.ViewModels
 
         private async void JoinTeam()
         {
-            Team team = await _dataService.JoinTeamAsync(this.TeamCode);
+            TeamMembership team = await _dataService.JoinTeamAsync(this.TeamCode);
+            _settingsService.MyTeamId = team.Id;
+            _settingsService.MyTeamName = team.Name;
+
 
             await _navigationService.NavigateToViewModelAsync<RaceSelectionViewModel>();
         }
