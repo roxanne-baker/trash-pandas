@@ -7,6 +7,7 @@ namespace InfusionGames.CityScramble.Views
         public LeaderView()
         {
             InitializeComponent();
+
         }
     }
 }

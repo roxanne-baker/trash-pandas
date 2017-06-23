@@ -27,9 +27,12 @@ namespace InfusionGames.CityScramble.Services
 
         public async Task<TeamMembership> JoinTeamAsync(string teamCode)
         {
-            var teamMembershipParameters = new Dictionary<string, string>();
-            teamMembershipParameters["joinCode"] = teamCode;
-            var teamMembership = await _client.InvokeApiAsync<TeamMembership>("profile", HttpMethod.Post, teamMembershipParameters);
+       
+                var teamMembershipParameters = new Dictionary<string, string>();
+                teamMembershipParameters["joinCode"] = teamCode;
+                var teamMembership = await _client.InvokeApiAsync<TeamMembership>("profile", HttpMethod.Post, teamMembershipParameters);
+            
+         
             return teamMembership;
         }
 
@@ -49,7 +52,12 @@ namespace InfusionGames.CityScramble.Services
 
         public async Task<Race> GetRaceAsync(string id)
         {
-            throw new NotImplementedException("GetRaceAsync");
+            // throw new NotImplementedException("GetRaceAsync");
+            var RaceParameters = new Dictionary<string, string>();
+            RaceParameters["id"] = id;
+            var race = await _client.InvokeApiAsync<Race>("race/{id}", HttpMethod.Get, RaceParameters);
+
+            return race;
         }
 
         public async Task<IEnumerable<TeamClue>> GetCluesForTeamAsync(string raceId)
