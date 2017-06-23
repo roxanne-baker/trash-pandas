@@ -16,6 +16,7 @@
                 Style="{StaticResource ListViewStyle}"
                 HasUnevenRows="True"
                 GroupHeaderTemplate="{StaticResource GroupHeaderTemplate}"
+                ItemsSource="{Binding SelectedRace.Teams}"
               >
         
       </ListView>

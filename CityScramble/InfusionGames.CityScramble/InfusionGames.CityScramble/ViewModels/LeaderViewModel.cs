@@ -12,6 +12,12 @@ namespace InfusionGames.CityScramble.ViewModels
     /// </summary>
     public class LeaderViewModel : BaseScreen, IRaceTab
     {
+        private readonly IDataService _dataService;
+        public LeaderViewModel(IDataService dataService)
+        {
+            _dataService = dataService;
+        }
+
         #region IRaceTab implementation
         /// <summary>
         /// Navigation Parameter
@@ -27,7 +33,16 @@ namespace InfusionGames.CityScramble.ViewModels
         public bool IsSupported(Race race)
         {
             return true;
-        } 
+        }
         #endregion
+
+        protected override void OnActivate()
+        {
+            //base.OnActivate();
+           var teams = _dataService.GetRaceAsync(SelectedRace.Id).Result.Teams;
+           
+        
+
+        }
     }    
 }
