@@ -16,6 +16,7 @@ namespace InfusionGames.CityScramble.ViewModels
     /// </summary>
     public class CluesViewModel : BaseScreen, IRaceTab
     {
+
         #region IRaceTab implementation
         /// <summary>
         /// Navigation Parameter
@@ -33,5 +34,14 @@ namespace InfusionGames.CityScramble.ViewModels
 			return race.Enrolled && race.Status() != Race.ActiveStatus.Upcoming;
         }
         #endregion
+        public BindableCollection<Clue> Clues { get; set; } 
+
+        private readonly IDataService _dataService;
+        public CluesViewModel(IDataService dataService)
+        {
+            _dataService = dataService;
+        }
+
+
     }
 }
