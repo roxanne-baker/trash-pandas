@@ -52,7 +52,7 @@ namespace InfusionGames.CityScramble.ViewModels
         {
             base.OnActivate();
 
-            //await _locationService.StartSendingLocation(SelectedRace);
+            await _locationService.StartSendingLocation(SelectedRace);
             //await _pushService.RegisterForPush();
         }
     }

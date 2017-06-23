@@ -7,6 +7,7 @@ using InfusionGames.CityScramble.Models;
 using Microsoft.WindowsAzure.MobileServices;
 using Microsoft.WindowsAzure.Storage.Auth;
 using Microsoft.WindowsAzure.Storage.Blob;
+using Plugin.Geolocator;
 
 namespace InfusionGames.CityScramble.Services
 {
@@ -54,7 +55,10 @@ namespace InfusionGames.CityScramble.Services
 
         public async Task<IEnumerable<TeamClue>> GetCluesForTeamAsync(string raceId)
         {
-            throw new NotImplementedException("GetCluesForTeamAsync");
+            var raceIdParam = new Dictionary<string, string>();
+            raceIdParam["raceId"] = raceId;
+            var clues = await _client.InvokeApiAsync<IEnumerable<TeamClue>>("race/{raceId}/clues", HttpMethod.Get, raceIdParam);
+            return clues;
         }
 
         public async Task<ClueResponse> GetClueResponse(string clueId)
