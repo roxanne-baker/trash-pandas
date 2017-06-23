@@ -56,7 +56,7 @@ namespace InfusionGames.CityScramble.Services
             // throw new NotImplementedException("GetRaceAsync");
             var RaceParameters = new Dictionary<string, string>();
             RaceParameters["id"] = id;
-            var race = await _client.InvokeApiAsync<Race>("race/", HttpMethod.Get, RaceParameters);
+            var race = await _client.InvokeApiAsync<Race>("race/{id}", HttpMethod.Get, RaceParameters);
 
             return race;
         }
