@@ -3,8 +3,12 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:controls="clr-namespace:InfusionGames.CityScramble.Controls;assembly=InfusionGames.CityScramble"
              xmlns:views="clr-namespace:InfusionGames.CityScramble.Views;assembly=InfusionGames.CityScramble"
+             xmlns:maps="clr-namespace:Xamarin.Forms.Maps;assembly=Xamarin.Forms.Maps"
              x:Class="InfusionGames.CityScramble.Views.MapView">
   <Grid VerticalOptions="FillAndExpand">
-    <!-- TODO Map Control -->
+    <maps:Map
+       x:Name="MyMap"
+       IsShowingUser="true"
+        />
   </Grid>
 </ContentView>

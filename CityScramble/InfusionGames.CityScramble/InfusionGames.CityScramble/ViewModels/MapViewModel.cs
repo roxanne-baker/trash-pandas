@@ -14,6 +14,17 @@ namespace InfusionGames.CityScramble.ViewModels
 {
     public class MapViewModel : BaseScreen, IRaceTab
     {
+
+        private readonly ISettingsService _settingsService;
+        private readonly IDataService _dataService;
+        private Map _map;
+
+        public MapViewModel(ISettingsService settingsService, IDataService dataService)
+        {
+            _settingsService = settingsService;
+            _dataService = dataService;
+        }
+
         #region IRaceTab implementation
 
         public Race SelectedRace { get; set; }
@@ -36,12 +47,43 @@ namespace InfusionGames.CityScramble.ViewModels
         protected override void OnViewAttached(object view, object context)
         {
             base.OnViewAttached(view, context);
-            
-            // TODO: Acquire the map from the view because the map control isn't MVVM friendly
+            var mapView = (MapView)view;
+            _map = mapView.GetMap();
+
+        }
+
+        protected async override void OnActivate()
+        {
+            base.OnActivate();
+
+            await UpdateMap();
         }
 
         #endregion
-        
+
+        public async Task UpdateMap()
+        {
+            IEnumerable<TeamClue> clues = await _dataService.GetCluesForTeamAsync(_settingsService.RaceId);
+            IList<Position> clueCoords = new List<Position>();
+            foreach (TeamClue clue in clues)
+            {
+                var position = new Position(clue.Latitude, clue.Longitude);
+                clueCoords.Add(position);
+                var pin = new Pin
+                {
+                    Type = PinType.Generic,
+                    Position = position,
+                    Label = clue.Name
+                };
+                _map.Pins.Add(pin);
+            }
+
+            _map.MoveToRegion(MapSpan.FromCenterAndRadius(GetCentralGeoCoordinate(clueCoords), Distance.FromKilometers(1)));
+        }
+
+
+
+
 
         /// <summary>
         /// Return the geo center of all points.

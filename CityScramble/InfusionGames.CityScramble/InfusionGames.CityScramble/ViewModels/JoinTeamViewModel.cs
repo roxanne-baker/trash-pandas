@@ -63,7 +63,6 @@ namespace InfusionGames.CityScramble.ViewModels
             _settingsService.MyTeamId = team.Id;
             _settingsService.MyTeamName = team.Name;
 
-
             await _navigationService.NavigateToViewModelAsync<RaceSelectionViewModel>();
         }
 
