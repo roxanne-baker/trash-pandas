@@ -43,12 +43,6 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\InfusionGames.CityScramble.iOS\InfusionGames.CityScramble.iOS.csproj">
-      <Project>{F30C755E-5379-4181-8E6B-F536AE49AD2B}</Project>
-      <Name>InfusionGames.CityScramble.iOS</Name>
-      <ReferenceOutputAssembly>False</ReferenceOutputAssembly>
-      <Private>False</Private>
-    </ProjectReference>
     <ProjectReference Include="..\InfusionGames.CityScramble\InfusionGames.CityScramble.csproj">
       <Project>{AD994EAF-9038-4D9A-8791-DBC3C866C756}</Project>
       <Name>InfusionGames.CityScramble</Name>
